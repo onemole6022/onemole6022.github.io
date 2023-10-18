@@ -12,6 +12,7 @@
 body {
     font-family: "Open Sans", sans-serif;
     color: #444444;
+    /* width: 10%; */
 }
 
 a {
@@ -444,15 +445,42 @@ h6 {
     /* opacity: 0.1; */
 }
 
+
+.bg-down-index
+{
+    margin-top: -5px;
+    min-width: 600px;
+    max-width: 1500px;
+    width: 100%;
+    /* width: 100%; */
+    /* height: 200px; */
+}
+
+.bg-down-index img{
+    margin-top: -5px;
+    width: 100%;
+}
+
 .bg-down
 {
-    width: 98vw;
+    margin-top: -5px;
+    /* min-width: 600px;
+    max-width: 1500px; */
+    width: 100%;
+    /* width: 100%; */
     /* height: 200px; */
 }
 
 .bg-down-space{
     background-color: #101620;
     height: 1000px;
+    width: 100%;
+}
+
+.bg-down-space-index{
+    background-color: #101620;
+    height: 1000px;
+    width: 600px;
 }
 
 .bg-down img{
@@ -539,6 +567,8 @@ h6 {
     /* background-color: #353; */
     position: relative;
     height: 100vh;
+    max-width: 1500px;
+    min-width: 600px;
     width: 100%;
     overflow: hidden;
 }
@@ -560,9 +590,9 @@ h6 {
 }
 
 .class-0 {
-    width: calc(3840 / 1.8 * 100% / 1920);
+    width: calc(3840 / 1.4 * 100% / 1920);
     position: absolute;
-    top: calc(50%);
+    top: calc(70%);
     left: calc(50%);
     transform: translate(-50%, -50%);
 }
@@ -618,7 +648,7 @@ h6 {
 .class-3 {
     width: calc(719 / 1.8 * 100% / 1920);
     position: absolute;
-    top: calc(50% + 130 / 1.8 * 100% / 1080);
+    top: calc(50% + 300 / 1.8 * 100% / 1080);
     left: calc(50% + 850 / 1.8 * 100% / 1920);
     transform: translate(-50%, -50%);
 }
@@ -675,7 +705,7 @@ h6 {
     transform: translate(-50%, -50%);
 }
 
-.name {
+.parellax-name {
     /* width: calc(300 / 1.8 * 100% / 1920); */
     position: absolute;
     top: calc(50% + 0 / 1.8 * 100% / 1080);
@@ -692,7 +722,7 @@ h6 {
     background-color: rgb(16, 22, 32);
 }
 
-.desc {
+.parellax-desc {
     /* width: calc(300 / 1.8 * 100% / 1920); */
     position: absolute;
     top: calc(50% + 200 / 1.8 * 100% / 1080);
@@ -720,6 +750,27 @@ h6 {
     #hero .container {
         padding-top: 58px;
     }
+}
+
+@media (max-width:1165px) {
+    .parellax-name {
+        font-size: 3.1rem;
+    }
+
+    .parellax-desc{
+        font-size: 2rem;;
+    }   
+}
+
+@media (max-width:725px) {
+    .parellax-name {
+        font-size: 2.5rem;
+        line-height: 0.5rem;
+    }
+
+    .parellax-desc{
+        font-size: 1.7rem;;
+    }   
 }
 
 #hero h1 {

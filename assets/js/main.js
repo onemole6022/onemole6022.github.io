@@ -10,6 +10,18 @@
   "use strict";
 
   const parellax_el = document.querySelectorAll( ".parellax" );
+  const mained = document.querySelector(".mained" );
+
+  const parellel_text = document.querySelector("parellax-name")
+
+  // if(window.innerWidth>= 725)
+  // {
+  //   mained.style.maxHeight = `${0.6 * window.innerWidth}px`
+  // }else
+  // {
+  //   mained.style.maxHeight = `${1.6 * window.innerWidth}px`
+  // }
+
 
   let xVal = 0, yVal = 0;
 
@@ -17,19 +29,21 @@
 
   window.addEventListener( "mousemove", ( e ) =>
   {
-    xVal = e.clientX - window.innerWidth / 2;
-    yVal = e.clientY - window.innerHeight / 2;
-
-
-    parellax_el.forEach( ( el ) =>
+    if(window.innerWidth >600)
     {
-      let isleft = parseFloat( getComputedStyle( el ).left ) < window.innerWidth / 2 ? 1 : -1;
-      let zVal = ( e.clientX - ( parseFloat( getComputedStyle( el ).left ) ) ) * isleft;
-      let speedx = el.dataset.speedx;
-      let speedy = el.dataset.speedx * window.innerHeight / window.innerWidth;
-      let sppedz = el.dataset.speedz;
-      el.style.transform = `translateX(calc(-50% + ${ -xVal * speedx }px)) translateY(calc(-50% + ${ yVal * speedy }px)) perspective(1920px) translateZ(${ zVal * 0.01 }px)`;
-    } );
+      xVal = e.clientX - window.innerWidth / 2;
+      yVal = e.clientY - window.innerHeight / 2;
+      
+      parellax_el.forEach( ( el ) =>
+      {
+        let isleft = parseFloat( getComputedStyle( el ).left ) < window.innerWidth / 2 ? 1 : -1;
+        let zVal = ( e.clientX - ( parseFloat( getComputedStyle( el ).left ) ) ) * isleft;
+        let speedx = el.dataset.speedx;
+        let speedy = el.dataset.speedx * window.innerHeight / window.innerWidth;
+        let sppedz = el.dataset.speedz;
+        el.style.transform = `translateX(calc(-50% + ${ -xVal * speedx }px)) translateY(calc(-50% + ${ yVal * speedy }px)) perspective(1000px) translateZ(${ zVal * 0.01 }px)`;
+      })
+    };
   } );
 
   /**
