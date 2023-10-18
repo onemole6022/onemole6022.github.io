@@ -10,30 +10,73 @@
   "use strict";
 
   const parellax_el = document.querySelectorAll( ".parellax" );
-  const mained = document.querySelector(".mained" );
+  const normal = document.querySelectorAll( ".normal" );
+  const mained = document.querySelector( ".mained" );
 
-  const parellel_text = document.querySelector("parellax-name")
+  const parellel_text = document.querySelector( "parellax-name" );
 
-  // if(window.innerWidth>= 725)
-  // {
-  //   mained.style.maxHeight = `${0.6 * window.innerWidth}px`
-  // }else
-  // {
-  //   mained.style.maxHeight = `${1.6 * window.innerWidth}px`
-  // }
+  const name = document.querySelector( ".parellex-name" );
+
+  window.onload = () =>
+  {
+    if ( window.innerWidth < 600 )
+    {
+      document.querySelector( ".parellax-name-mob" ).style.fontSize = `${ window.innerWidth * 0.003 }rem`;
+      document.querySelector( ".parellax-desc-mob" ).style.fontSize = `${ window.innerWidth * 0.002 }rem`;
+      document.getElementById( "header" ).style.height = `${ Math.max( window.innerWidth * 0.1, 48 ) }px`;
+
+    } else
+    {
+      document.querySelector( ".parellax-name" ).style.fontSize = `${ window.innerWidth * 0.003 }rem`;
+      document.querySelector( ".parellax-desc" ).style.fontSize = `${ window.innerWidth * 0.002 }rem`;
+    }
+  };
+
+
+  window.addEventListener( "resize", () =>
+  {
+    if ( window.innerWidth < 600 )
+    {
+      document.querySelector( ".parellax-name-mob" ).style.fontSize = `${ window.innerWidth * 0.003 }rem`;
+      document.querySelector( ".parellax-desc-mob" ).style.fontSize = `${ window.innerWidth * 0.002 }rem`;
+      document.getElementById( "header" ).style.height = `${ Math.max( window.innerWidth * 0.1, 48 ) }px`;
+    } else
+    {
+      document.querySelector( ".parellax-name" ).style.fontSize = `${ window.innerWidth * 0.003 }rem`;
+      document.querySelector( ".parellax-desc" ).style.fontSize = `${ window.innerWidth * 0.002 }rem`;
+    }
+  } );
 
 
   let xVal = 0, yVal = 0;
 
   // const github = document.querySelector(".github").href = "https://www.github.com/komplex01"
 
+  if ( window.innerWidth < 600 )
+  {
+    parellax_el.forEach( ( el ) =>
+    {
+      mained.style.height = "100%";
+      el.remove();
+    } );
+  } else
+  {
+    mained.style.minWidth = "500px";
+    document.querySelector( ".bg-down" ).style.minWidth = "500px";
+    normal.forEach( ( el ) =>
+    {
+      mained.style.height = "100vh";
+      el.remove();
+    } );
+  }
+
   window.addEventListener( "mousemove", ( e ) =>
   {
-    if(window.innerWidth >600)
+    if ( window.innerWidth > 600 )
     {
       xVal = e.clientX - window.innerWidth / 2;
       yVal = e.clientY - window.innerHeight / 2;
-      
+
       parellax_el.forEach( ( el ) =>
       {
         let isleft = parseFloat( getComputedStyle( el ).left ) < window.innerWidth / 2 ? 1 : -1;
@@ -42,7 +85,7 @@
         let speedy = el.dataset.speedx * window.innerHeight / window.innerWidth;
         let sppedz = el.dataset.speedz;
         el.style.transform = `translateX(calc(-50% + ${ -xVal * speedx }px)) translateY(calc(-50% + ${ yVal * speedy }px)) perspective(1000px) translateZ(${ zVal * 0.01 }px)`;
-      })
+      } );
     };
   } );
 
